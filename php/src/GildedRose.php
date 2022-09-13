@@ -10,12 +10,12 @@ final class GildedRose
      * @var Item[]
      */
     private $items;
-    private CommandFactory $commandFactory;
+    private CommandFactoryInterface $commandFactory;
 
-    public function __construct(array $items)
+    public function __construct(array $items, CommandFactoryInterface $commandFactory)
     {
         $this->items = $items;
-        $this->commandFactory = new CommandFactory();
+        $this->commandFactory = $commandFactory;
     }
 
     public function updateQuality(): void
