@@ -6,6 +6,9 @@ namespace GildedRose;
 
 final class Item
 {
+    private const MAX_QUALITY = 50;
+    private const MIN_QUALITY = 0;
+
     /**
      * @var string
      */
@@ -31,5 +34,33 @@ final class Item
     public function __toString(): string
     {
         return "{$this->name}, {$this->sell_in}, {$this->quality}";
+    }
+
+    public function increaseQuality(): void
+    {
+        if ($this->quality >= self::MAX_QUALITY) {
+            return;
+        }
+
+        $this->quality += 1;
+    }
+
+    public function decreaseQuality(): void
+    {
+        if ($this->quality <= self::MIN_QUALITY) {
+            return;
+        }
+
+        $this->quality -= 1;
+    }
+
+    public function isSellDatePassed(): bool
+    {
+        return $this->sell_in < 0;
+    }
+
+    public function decreaseSellDate(): void
+    {
+        $this->sell_in -= 1;
     }
 }
