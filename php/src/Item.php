@@ -6,6 +6,9 @@ namespace GildedRose;
 
 final class Item
 {
+    private const MAX_QUALITY = 50;
+    private const MIN_QUALITY = 0;
+
     /**
      * @var string
      */
@@ -35,7 +38,7 @@ final class Item
 
     public function increaseQuality(): void
     {
-        if ($this->quality >= 50) {
+        if ($this->quality >= self::MAX_QUALITY) {
             return;
         }
 
@@ -44,7 +47,7 @@ final class Item
 
     public function decreaseQuality(): void
     {
-        if ($this->quality <= 0) {
+        if ($this->quality <= self::MIN_QUALITY) {
             return;
         }
 
